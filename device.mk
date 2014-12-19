@@ -131,6 +131,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.msm8226
 
+# Time
+PRODUCT_PACKAGES += \
+    libtime_genoff
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226
