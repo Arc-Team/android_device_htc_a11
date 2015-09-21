@@ -226,7 +226,7 @@
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
-        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="deep-buffer-playback hdmi">
@@ -289,6 +289,23 @@
         <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
     </path>
 
+    <path name="low-latency-record">
+        <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record usb-headset-mic">
+        <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record bt-sco">
+        <ctl name="MultiMedia5 Mixer INTERNAL_BT_SCO_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record bt-sco-wb">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <path name="audio-record bt-sco" />
+    </path>
+
     <path name="voice-call">
         <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
@@ -303,14 +320,12 @@
         <ctl name="Internal BTSCO SampleRate" value="8000" />
         <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="1" />
-
     </path>
 
     <path name="voice-call bt-sco-wb">
         <ctl name="Internal BTSCO SampleRate" value="16000" />
         <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="1" />
-
     </path>
 
     <path name="voice2-call">
@@ -335,15 +350,6 @@
         <ctl name="Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2" value="1" />
     </path>
 
-    <path name="voice2-call speaker">
-        <ctl name="QUAT_MI2S_RX_Voice Mixer Voice2" value="1" />
-        <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
-        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
-    </path>
-
-    <path name="voice2-call speaker-headset">
-        <path name="voice2-call" />
-    </path>
     <!-- htc route start -->
     <path name="htc-amp-ctrl speaker">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia2" value="1" />
@@ -353,7 +359,11 @@
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
-    <path name="deep-buffer-playback speaker-headset">
+    <path name="deep-buffer-playback voice-speaker">
+        <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="deep-buffer-playback speaker-and-headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
@@ -367,7 +377,7 @@
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
-    <path name="low-latency-playback speaker-headset">
+    <path name="low-latency-playback speaker-and-headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia5" value="1" />
     </path>
@@ -377,11 +387,15 @@
         <path name="low-latency-playback speaker" />
     </path>
 
+    <path name="low-latency-playback voice-speaker">
+        <path name="low-latency-playback speaker" />
+    </path>
+
     <path name="compress-offload-playback speaker">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
-    <path name="compress-offload-playback speaker-headset">
+    <path name="compress-offload-playback speaker-and-headphones">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
@@ -391,14 +405,24 @@
         <path name="compress-offload-playback speaker" />
     </path>
 
-    <path name="voice-call speaker">
+    <path name="voice-call voice-speaker">
         <ctl name="QUAT_MI2S_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
     </path>
 
-    <path name="voice-call speaker-headset">
+    <path name="voice-call voice-speaker-headset">
         <path name="voice-call" />
+    </path>
+
+    <path name="voice2-call voice-speaker">
+        <ctl name="QUAT_MI2S_RX_Voice Mixer Voice2" value="1" />
+        <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
+        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+    </path>
+
+    <path name="voice2-call voice-speaker-headset">
+        <path name="voice2-call" />
     </path>
 
     <path name="play-fm">
@@ -427,14 +451,12 @@
         <ctl name="Internal BTSCO SampleRate" value="8000" />
         <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer VoLTE" value="1" />
         <ctl name="VoLTE_Tx Mixer INTERNAL_BT_SCO_TX_VoLTE" value="1" />
-
     </path>
 
     <path name="volte-call bt-sco-wb">
         <ctl name="Internal BTSCO SampleRate" value="16000" />
         <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer VoLTE" value="1" />
         <ctl name="VoLTE_Tx Mixer INTERNAL_BT_SCO_TX_VoLTE" value="1" />
-
     </path>
 
     <path name="volte-call speaker">
@@ -443,7 +465,7 @@
         <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
     </path>
 
-    <path name="volte-call speaker-headset">
+    <path name="volte-call speaker-and-headphones">
         <path name="volte-call" />
     </path>
 
@@ -465,7 +487,7 @@
         <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
     </path>
 
-    <path name="compress-voip-call speaker-headset">
+    <path name="compress-voip-call speaker-and-headphones">
         <path name="compress-voip-call" />
     </path>
 
@@ -788,7 +810,7 @@
         <ctl name="DEC5 Volume" value="84" />
     </path>
 
-    <path name="headset-vr">
+    <path name="headset-mic">
         <path name="headset-mic-generic" />
         <ctl name="ADC2 Volume" value="12" />
         <ctl name="DEC5 Volume" value="95" />
@@ -806,7 +828,7 @@
         <ctl name="ADC2 Volume" value="8" />
         <ctl name="DEC5 Volume" value="84" />
     </path>
-
+    <!-- M8 calls this path for normal phone calls -->
     <path name="speaker">
     </path>
 
@@ -902,28 +924,32 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="dmic1" />
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="handset">
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM_0_RX Channels" value="One" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="DAC1 Switch" value="1" />
+        <path name="earpiece" />
+    </path>
+
+    <path name="voice-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef">
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="handset-mic">
-        <path name="dmic1" />
+        <path name="line-vr" />
     </path>
 
+    <!-- M8 calls this path for normal phone calls -->
     <path name="voice-handset">
-        <path name="sidetone-handset" />
-        <path name="handset" />
+        <path name="earpiece-voice" />
     </path>
 
     <path name="voice-handset-tmus">
-        <path name="handset" />
+        <path name="earpiece-voice" />
     </path>
 
     <path name="speaker-voice">
@@ -938,19 +964,20 @@
         <path name="speaker" />
     </path>
 
+    <path name="voice-speaker">
+        <path name="speaker" />
+    </path>
+
     <path name="voice-speaker-mic">
-        <path name="speaker-mic" />
+        <path name="speaker-dmic-endfire" />
     </path>
 
     <path name="voice-headphones">
-        <path name="sidetone-headphones" />
-        <path name="headphones" />
+        <path name="headphones-voice" />
     </path>
 
     <path name="voice-headset-mic">
-    <!-- will not select this device in HAL -->
-        <path name="headset-mic-generic" />
-        <ctl name="ADC2 Volume" value="13" />
+        <path name="headset-voice" />
     </path>
 
     <path name="low-latency-playback voice-speaker-and-headphones">
@@ -980,7 +1007,7 @@
     </path>
 
     <path name="voice-rec-mic">
-        <path name="handset-mic" />
+        <path name="line-vr" />
     </path>
 
     <path name="camcorder-mic">
@@ -1011,6 +1038,10 @@
 
     <path name="voice-tty-vco-handset-mic">
         <path name="adc1" />
+    </path>
+
+    <path name="echo-reference">
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_RX" />
     </path>
 
 </mixer>
