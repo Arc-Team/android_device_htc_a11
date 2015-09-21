@@ -92,6 +92,9 @@ BOARD_EGL_CFG := device/htc/a11/configs/egl.cfg
 # WebView version
 PREBUILT_WEBVIEW_VERSION := beta
 
+# pac optimizations
+PAC_LOW_RAM_DEVICE := true
+
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := device/htc/a11/include
 
