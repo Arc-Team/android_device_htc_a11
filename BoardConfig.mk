@@ -89,6 +89,9 @@ USE_OPENGL_RENDERER := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 BOARD_EGL_CFG := device/htc/a11/configs/egl.cfg
 
+# WebView version
+PREBUILT_WEBVIEW_VERSION := beta
+
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := device/htc/a11/include
 
